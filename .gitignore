@@ -1,0 +1,30 @@
+# dependencies
+node_modules
+
+# personal results
+prefs/
+jobs.json
+search.log
+
+# editor config
+.cursor/
+.idea
+.vscode
+
+# build output
+out
+dist
+*.tgz
+
+# env
+.env
+.env.local
+.env.*.local
+
+# caches
+.eslintcache
+.cache
+*.tsbuildinfo
+
+# OS
+.DS_Store
