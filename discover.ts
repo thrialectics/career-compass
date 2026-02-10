@@ -1,9 +1,9 @@
-import { getCardsByRound, roundNames, type Card } from "./cards.ts";
+import { getCardsByRound, allCards, roundNames, type Card } from "./cards.ts";
 import {
   recordSwipe,
   getTopDimensions,
   getMatchingRoles,
-  getMatchingCompanies,
+  getMatchingArchetypes,
   saveResults,
   ensurePrefsDir,
   type Reaction,
@@ -63,13 +63,16 @@ async function waitForEnter() {
   });
 }
 
+const overallTotal = allCards.length;
+let overallDone = 0;
+
 async function runRound(round: number): Promise<boolean> {
   const cards = shuffle(getCardsByRound(round));
 
   for (let i = 0; i < cards.length; i++) {
     const card = cards[i]!;
     clearScreen();
-    renderCard(card, i, cards.length);
+    renderCard(card, i, cards.length, overallDone, overallTotal);
 
     let validInput = false;
     while (!validInput) {
@@ -81,6 +84,7 @@ async function runRound(round: number): Promise<boolean> {
       if (k === "y" || k === "n" || k === "s") {
         recordSwipe(card, k as Reaction);
         validInput = true;
+        overallDone++;
       }
     }
   }
@@ -118,8 +122,8 @@ async function main() {
   const drawn = getTopDimensions(5, "positive");
   const avoid = getTopDimensions(5, "negative");
   const roles = getMatchingRoles();
-  const companies = getMatchingCompanies();
-  renderFinalProfile(drawn, avoid, roles, companies);
+  const archetypes = getMatchingArchetypes();
+  renderFinalProfile(drawn, avoid, roles, archetypes);
 
   await saveResults();
 }

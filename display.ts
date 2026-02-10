@@ -18,12 +18,29 @@ export function clearScreen() {
   process.stdout.write("\x1b[2J\x1b[H");
 }
 
-export function renderCard(card: Card, index: number, total: number) {
+function progressBar(current: number, total: number, width: number = 30): string {
+  const pct = current / total;
+  const filled = Math.min(Math.round(pct * width), width);
+  const empty = width - filled;
+  return `${CYAN}${"━".repeat(filled)}${RESET}${DIM}${"━".repeat(empty)}${RESET}`;
+}
+
+function roundDots(currentRound: number): string {
+  return [1, 2, 3, 4]
+    .map((r) => (r < currentRound ? `${GREEN}●${RESET}` : r === currentRound ? `${CYAN}●${RESET}` : `${DIM}○${RESET}`))
+    .join(" ");
+}
+
+export function renderCard(card: Card, index: number, total: number, overallDone: number, overallTotal: number) {
   const roundName = roundNames[card.round] ?? `Round ${card.round}`;
   const header = `  ${CYAN}${BOLD}Career Compass — Round ${card.round}: ${roundName} (${index + 1}/${total})${RESET}`;
+  const pct = Math.round((overallDone / overallTotal) * 100);
 
   const lines = card.text.split("\n").map((l) => `  ${l}`);
 
+  console.log();
+  console.log(`  ${roundDots(card.round)}  ${DIM}${pct}%${RESET}`);
+  console.log(`  ${progressBar(overallDone, overallTotal)}`);
   console.log();
   console.log(header);
   console.log(`  ${DIM}${LINE}${RESET}`);
@@ -83,7 +100,7 @@ export function renderFinalProfile(
   drawn: [string, number][],
   avoid: [string, number][],
   roles: string[],
-  companies: { name: string; sector: string; location: string }[],
+  archetypes: string[],
 ) {
   console.log();
   console.log(`  ${CYAN}${BOLD}Your Career Compass Profile${RESET}`);
@@ -113,16 +130,14 @@ export function renderFinalProfile(
     roles.forEach((r, i) => console.log(`    ${i + 1}. ${r}`));
   }
 
-  if (companies.length > 0) {
+  if (archetypes.length > 0) {
     console.log();
-    console.log(`  ${MAGENTA}${BOLD}Top matching companies from your tracker:${RESET}`);
-    companies.forEach((c, i) =>
-      console.log(`    ${i + 1}. ${c.name} (${c.sector}) — ${c.location}`),
-    );
+    console.log(`  ${MAGENTA}${BOLD}What to look for:${RESET}`);
+    archetypes.forEach((a, i) => console.log(`    ${i + 1}. ${a}`));
   }
 
   console.log();
-  console.log(`  ${DIM}Profile saved to job-search/prefs/profile.json${RESET}`);
+  console.log(`  ${DIM}Profile saved to prefs/profile.json${RESET}`);
   console.log();
 }
 
@@ -139,7 +154,7 @@ export function renderWelcome() {
   console.log(`  ${YELLOW}[s]${RESET} Skip — no strong feeling`);
   console.log(`  ${DIM}[q] Quit at any time${RESET}`);
   console.log();
-  console.log(`  4 rounds, 47 cards. Takes about 5-10 minutes.`);
+  console.log(`  4 rounds, 70 cards. Takes about 10 minutes.`);
   console.log();
 }
 

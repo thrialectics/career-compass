@@ -6,49 +6,49 @@ export interface Card {
   source: "real" | "crafted";
 }
 
-// Round 1: Company Vibes (12 cards)
+// Round 1: Company Vibes (18 cards)
 const companyVibes: Card[] = [
   {
     id: "co-1",
     round: 1,
-    text: `Recidiviz — A tech nonprofit with ~60 engineers building\ntools that help reduce mass incarceration.\nRemote-first with offices in NYC and Oakland.\nTeam members come from Google, Apple, Dropbox.\nThey ship fast and measure impact directly.`,
+    text: `A tech nonprofit with ~60 engineers building\ntools that help reduce mass incarceration.\nRemote-first with offices in NYC and Oakland.\nTeam members come from top tech companies.\nThey ship fast and measure impact directly.`,
     tags: ["mission-driven", "civic-tech", "remote-first", "engineering", "small-team"],
-    source: "real",
+    source: "crafted",
   },
   {
     id: "co-2",
     round: 1,
-    text: `Duolingo — A public edtech company with 700+ employees.\nBuilds the world's most popular language-learning app.\nData-driven culture: every feature is A/B tested.\nPittsburgh HQ with offices worldwide.\nKnown for gamification and quirky brand voice.`,
-    tags: ["edtech", "large-org", "product", "data-heavy", "profit-driven"],
-    source: "real",
+    text: `A public edtech company with 700+ employees.\nBuilds the world's most popular language app.\nData-driven culture: every feature is A/B tested.\nHQ with offices worldwide, in-office culture.\nKnown for gamification and quirky brand voice.`,
+    tags: ["edtech", "large-org", "product", "data-heavy", "in-office"],
+    source: "crafted",
   },
   {
     id: "co-3",
     round: 1,
-    text: `Anthropic — An AI safety company building Claude.\n~1,000 employees, growing fast. SF and NYC offices.\nResearch-heavy culture with deep technical rigor.\nMission: build AI systems that are safe and beneficial.\nHigh autonomy, high expectations.`,
-    tags: ["ai", "mission-driven", "engineering", "large-org", "hybrid"],
-    source: "real",
+    text: `An AI safety lab with ~1,000 employees.\nResearch-heavy culture with deep technical rigor.\nMission: build AI systems that are safe and beneficial.\nGrowing fast, offices in SF and NYC.\nHigh autonomy, high expectations.`,
+    tags: ["ai", "mission-driven", "engineering", "research", "hybrid"],
+    source: "crafted",
   },
   {
     id: "co-4",
     round: 1,
-    text: `Bonterra — Nonprofit SaaS platform serving 16,000+ orgs.\nTools for fundraising, grantmaking, and advocacy.\nRemote-first, ~500 employees. Acquired several\nlegacy nonprofit tools and is unifying them.\nYour users are fundraisers, grant managers, advocates.`,
+    text: `A nonprofit SaaS platform serving 16,000+ orgs.\nTools for fundraising, grantmaking, and advocacy.\nRemote-first, ~500 employees. Acquired several\nlegacy tools and is unifying them into one platform.\nYour users are fundraisers, grant managers, advocates.`,
     tags: ["nonprofit-saas", "mission-driven", "remote-first", "customer-facing", "large-org"],
-    source: "real",
+    source: "crafted",
   },
   {
     id: "co-5",
     round: 1,
-    text: `Vercel — The company behind Next.js.\n~500 employees, fully remote. Developer tools\nfocused on making the web faster.\nOpen-source core with enterprise cloud product.\nEngineering-led culture, ships constantly.`,
+    text: `A developer tools company behind a popular\nopen-source framework. ~500 employees, fully remote.\nEngineering-led culture, ships constantly.\nOpen-source core with enterprise cloud product.\nFocused on making the web faster.`,
     tags: ["devtools", "remote-first", "tooling", "engineering", "profit-driven"],
-    source: "real",
+    source: "crafted",
   },
   {
     id: "co-6",
     round: 1,
-    text: `Notion — A productivity tool used by millions.\n~500 employees, SF-based with hybrid work.\nDesign-obsessed culture. Product decisions are\ndriven by user research and taste.\nKnown for a calm, thoughtful work environment.`,
-    tags: ["b2b-saas", "product", "hybrid", "large-org", "customer-facing"],
-    source: "real",
+    text: `A productivity tool used by millions.\n~500 employees, based in a major city, hybrid work.\nDesign-obsessed culture. Product decisions are\ndriven by user research and taste.\nKnown for a calm, thoughtful work environment.`,
+    tags: ["b2b-saas", "product", "hybrid", "large-org", "design-heavy"],
+    source: "crafted",
   },
   {
     id: "co-7",
@@ -67,34 +67,76 @@ const companyVibes: Card[] = [
   {
     id: "co-9",
     round: 1,
-    text: `Nava PBC — A public benefit corporation that\nbuilds technology for government services.\n~200 employees, fully remote.\nClients include CMS, VA, and state agencies.\nYour work directly affects how people access benefits.`,
+    text: `A public benefit corporation that builds\ntechnology for government services.\n~200 employees, fully remote.\nClients include federal and state agencies.\nYour work directly affects how people access benefits.`,
     tags: ["civic-tech", "mission-driven", "remote-first", "public-sector", "customer-facing"],
-    source: "real",
+    source: "crafted",
   },
   {
     id: "co-10",
     round: 1,
-    text: `Railway — A small developer tools company (~30 people)\nbuilding a modern cloud platform.\nFully remote, async-heavy. Engineers ship\nfeatures end-to-end. Strong community culture.\nCompetes with Heroku, Render, Fly.io.`,
+    text: `A small developer tools company (~30 people)\nbuilding a modern cloud platform.\nFully remote, async-heavy. Engineers ship\nfeatures end-to-end. Strong community culture.\nCompetes with major cloud hosting providers.`,
     tags: ["devtools", "startup", "small-team", "remote-first", "infrastructure"],
-    source: "real",
+    source: "crafted",
   },
   {
     id: "co-11",
     round: 1,
-    text: `Khan Academy — Free online education for anyone.\n~700 employees, remote-friendly (US/Canada).\nRecently launched AI tutoring features.\nMission-driven with a calm, supportive culture.\nLong release cycles, high quality bar.`,
+    text: `A free online education platform for anyone.\n~700 employees, remote-friendly.\nRecently launched AI tutoring features.\nMission-driven with a calm, supportive culture.\nLong release cycles, high quality bar.`,
     tags: ["edtech", "mission-driven", "remote-first", "product", "established"],
-    source: "real",
+    source: "crafted",
   },
   {
     id: "co-12",
     round: 1,
-    text: `A mid-stage B2B SaaS company (~150 people) in fintech.\nSeries C, growing 80% year-over-year.\nHybrid work (2 days/week in NYC office).\nFast-paced with aggressive quarterly goals.\nBig on metrics, dashboards, and OKRs.`,
+    text: `A mid-stage B2B SaaS company (~150 people) in fintech.\nSeries C, growing 80% year-over-year.\nHybrid work (2 days/week in office).\nFast-paced with aggressive quarterly goals.\nBig on metrics, dashboards, and OKRs.`,
     tags: ["fintech", "profit-driven", "hybrid", "data-heavy", "b2b-saas"],
+    source: "crafted",
+  },
+  {
+    id: "co-13",
+    round: 1,
+    text: `A healthcare SaaS startup with ~40 engineers.\nBuilding tools for hospitals and clinics to\nmanage patient records and billing.\nHIPAA compliance is a daily concern.\nRemote-first, mission-driven, slow and careful releases.`,
+    tags: ["healthcare", "startup", "mission-driven", "remote-first", "security"],
+    source: "crafted",
+  },
+  {
+    id: "co-14",
+    round: 1,
+    text: `A mid-size gaming studio with ~200 people.\nShips multiplayer games on PC and console.\nCreative, high-energy culture. Crunch happens\nbut they're trying to reduce it.\nIn-office in a major city, strong team bonds.`,
+    tags: ["gaming", "in-office", "code-heavy", "product", "established"],
+    source: "crafted",
+  },
+  {
+    id: "co-15",
+    round: 1,
+    text: `A major ecommerce platform with 10,000+ engineers.\nMillions of transactions per day. Massive scale.\nTeams are autonomous but the org is huge.\nHybrid work, offices worldwide.\nPromotion-driven culture, high comp.`,
+    tags: ["ecommerce", "large-org", "profit-driven", "hybrid", "infrastructure"],
+    source: "crafted",
+  },
+  {
+    id: "co-16",
+    round: 1,
+    text: `A social media company with ~3,000 employees.\nBillions of users, real-time feed at massive scale.\nMove-fast culture, shipping daily.\nEthics debates are constant. Impact is enormous.\nIn-office with some remote flexibility.`,
+    tags: ["social-media", "large-org", "code-heavy", "data-heavy", "in-office"],
+    source: "crafted",
+  },
+  {
+    id: "co-17",
+    round: 1,
+    text: `A streaming media company with ~1,500 engineers.\nPersonalization and recommendation algorithms\nare the core product. Strong data science culture.\nRemote-friendly, offices in LA and NYC.\nContent and engineering operate in separate worlds.`,
+    tags: ["media", "large-org", "data-heavy", "remote-first", "ai"],
+    source: "crafted",
+  },
+  {
+    id: "co-18",
+    round: 1,
+    text: `A logistics tech company (~100 people) optimizing\nlast-mile delivery for retailers.\nSeries B, growing fast. Real-time systems\nthat coordinate thousands of drivers.\nHybrid work, engineering-heavy culture.`,
+    tags: ["logistics", "startup", "infrastructure", "hybrid", "engineering"],
     source: "crafted",
   },
 ];
 
-// Round 2: Daily Work (15 cards)
+// Round 2: Daily Work (20 cards)
 const dailyWork: Card[] = [
   {
     id: "dw-1",
@@ -176,15 +218,15 @@ const dailyWork: Card[] = [
   {
     id: "dw-12",
     round: 2,
-    text: `Help nonprofit clients configure and launch\nyour platform. Run onboarding calls, build\ncustom reports, and train their staff.\nYou see the direct impact of your work.`,
-    tags: ["solutions", "customer-facing", "nonprofit-saas", "mission-driven"],
+    text: `Help clients configure and launch your platform.\nRun onboarding calls, build custom reports, and\ntrain their staff. You see the direct impact\nof your work in how they use the product.`,
+    tags: ["solutions", "customer-facing", "people-heavy", "b2b-saas"],
     source: "crafted",
   },
   {
     id: "dw-13",
     round: 2,
     text: `Build and maintain the design system. Create\nreusable components, write usage guidelines,\nand ensure visual consistency across the product.\nYou work closely with designers every day.`,
-    tags: ["engineering", "product", "code-heavy", "tooling"],
+    tags: ["engineering", "product", "code-heavy", "design-heavy"],
     source: "crafted",
   },
   {
@@ -198,12 +240,47 @@ const dailyWork: Card[] = [
     id: "dw-15",
     round: 2,
     text: `Pair program with teammates most of the day.\nMob programming sessions, live code reviews,\nand frequent knowledge sharing. The team\nlearns together and ships together.`,
-    tags: ["people-heavy", "engineering", "code-heavy", "small-team"],
+    tags: ["people-heavy", "engineering", "code-heavy", "mentorship"],
+    source: "crafted",
+  },
+  {
+    id: "dw-16",
+    round: 2,
+    text: `Design user interfaces and interaction flows.\nCreate prototypes in Figma, run usability tests,\niterate based on user feedback. You translate\nuser needs into visual, intuitive experiences.`,
+    tags: ["design-heavy", "product", "customer-facing", "people-heavy"],
+    source: "crafted",
+  },
+  {
+    id: "dw-17",
+    round: 2,
+    text: `Hunt for vulnerabilities in production systems.\nRun penetration tests, review code for security\nflaws, and respond to incidents. When you find\na bug, you figure out how an attacker would exploit it.`,
+    tags: ["security", "code-heavy", "engineering", "infrastructure"],
+    source: "crafted",
+  },
+  {
+    id: "dw-18",
+    round: 2,
+    text: `Build and ship features for a mobile app.\niOS one sprint, Android the next. Worry about\nbattery life, offline mode, and gesture UX.\nApp Store review day is always stressful.`,
+    tags: ["mobile", "code-heavy", "product", "engineering"],
+    source: "crafted",
+  },
+  {
+    id: "dw-19",
+    round: 2,
+    text: `Train ML models and analyze large datasets.\nJupyter notebooks in the morning, meetings with\nproduct in the afternoon. You translate messy\nreal-world data into actionable predictions.`,
+    tags: ["data-heavy", "ai", "research", "code-heavy"],
+    source: "crafted",
+  },
+  {
+    id: "dw-20",
+    round: 2,
+    text: `Write and maintain automated test suites.\nCatch bugs before they reach users. Design\ntest strategies, build CI pipelines, and keep\nthe release process trustworthy and fast.`,
+    tags: ["qa", "tooling", "engineering", "code-heavy"],
     source: "crafted",
   },
 ];
 
-// Round 3: Problems & Projects (12 cards)
+// Round 3: Problems & Projects (17 cards)
 const problemsProjects: Card[] = [
   {
     id: "pp-1",
@@ -236,7 +313,7 @@ const problemsProjects: Card[] = [
   {
     id: "pp-5",
     round: 3,
-    text: `Build an AI-powered assistant that helps\nnonprofit grant writers draft proposals.\nIntegrate with their existing workflow tools.\nMeasure success by grants funded.`,
+    text: `Build an AI-powered assistant that helps\ngrant writers draft proposals faster.\nIntegrate with their existing workflow tools.\nMeasure success by grants funded.`,
     tags: ["ai", "nonprofit-saas", "product", "mission-driven"],
     source: "crafted",
   },
@@ -264,14 +341,14 @@ const problemsProjects: Card[] = [
   {
     id: "pp-9",
     round: 3,
-    text: `Design a carbon footprint calculator that\ncompanies actually trust. Integrate with\ntheir accounting systems, apply EPA emission\nfactors, and generate audit-ready reports.`,
+    text: `Design a carbon footprint calculator that\ncompanies actually trust. Integrate with\ntheir accounting systems, apply emission\nfactors, and generate audit-ready reports.`,
     tags: ["climate", "data-heavy", "product", "customer-facing"],
     source: "crafted",
   },
   {
     id: "pp-10",
     round: 3,
-    text: `Help a state agency modernize their benefits\napplication portal. Replace a 20-year-old\nsystem so that applying for SNAP or Medicaid\nis as easy as ordering from Amazon.`,
+    text: `Help a state agency modernize their benefits\napplication portal. Replace a 20-year-old\nsystem so that applying for public services\nis as easy as ordering from Amazon.`,
     tags: ["civic-tech", "public-sector", "customer-facing", "mission-driven"],
     source: "crafted",
   },
@@ -289,15 +366,50 @@ const problemsProjects: Card[] = [
     tags: ["devtools", "tooling", "engineering", "internal-tools"],
     source: "crafted",
   },
+  {
+    id: "pp-13",
+    round: 3,
+    text: `Build a patient portal where people can view\nlab results, message their doctor, and schedule\nappointments. Security and accessibility are\nnon-negotiable. HIPAA compliance throughout.`,
+    tags: ["healthcare", "customer-facing", "security", "product"],
+    source: "crafted",
+  },
+  {
+    id: "pp-14",
+    round: 3,
+    text: `Build the matchmaking system for a multiplayer\ngame. Balance wait times against skill-based\nfairness. Handle 100K concurrent players.\nEvery millisecond of latency matters.`,
+    tags: ["gaming", "engineering", "code-heavy", "infrastructure"],
+    source: "crafted",
+  },
+  {
+    id: "pp-15",
+    round: 3,
+    text: `Build a recommendation engine for an ecommerce\nplatform. Personalize product suggestions based on\nbrowsing history, purchases, and trends.\nSuccess is measured in conversion rate lift.`,
+    tags: ["ecommerce", "ai", "data-heavy", "product"],
+    source: "crafted",
+  },
+  {
+    id: "pp-16",
+    round: 3,
+    text: `Design a content moderation system that handles\nmillions of posts per day. Balance free expression\nwith safety. Build tooling for human reviewers\nand ML classifiers that flag violations.`,
+    tags: ["social-media", "ai", "engineering", "data-heavy"],
+    source: "crafted",
+  },
+  {
+    id: "pp-17",
+    round: 3,
+    text: `Optimize delivery routes for 5,000 drivers across\na metro area. Real-time traffic, package priorities,\nand driver schedules all factor in. Shaving 2\nminutes per stop saves millions per year.`,
+    tags: ["logistics", "data-heavy", "engineering", "infrastructure"],
+    source: "crafted",
+  },
 ];
 
-// Round 4: Work Style (8 cards)
+// Round 4: Work Style (15 cards)
 const workStyle: Card[] = [
   {
     id: "ws-1",
     round: 4,
     text: `Fully remote, async-first. You set your own\nhours. Communication happens in documents and\nthreads, not meetings. You might go days\nwithout a video call.`,
-    tags: ["remote-first", "writing-heavy", "small-team"],
+    tags: ["remote-first", "writing-heavy", "high-autonomy"],
     source: "crafted",
   },
   {
@@ -347,6 +459,55 @@ const workStyle: Card[] = [
     round: 4,
     text: `Your work is visible to leadership. You\npresent to executives monthly. Impact is\nmeasured in business metrics. Strong\nwriters and communicators thrive here.`,
     tags: ["people-heavy", "writing-heavy", "large-org"],
+    source: "crafted",
+  },
+  {
+    id: "ws-9",
+    round: 4,
+    text: `You're on the individual contributor track.\nNo direct reports, no performance reviews to give.\nYou go deep on hard technical problems.\nYour influence comes from your code and ideas.`,
+    tags: ["ic-track", "code-heavy", "engineering", "high-autonomy"],
+    source: "crafted",
+  },
+  {
+    id: "ws-10",
+    round: 4,
+    text: `You manage a team of 6 engineers. Your day\nis 1:1s, hiring, and unblocking. You rarely\nwrite code anymore, but you shape what gets\nbuilt and how the team grows.`,
+    tags: ["management-track", "people-heavy", "large-org"],
+    source: "crafted",
+  },
+  {
+    id: "ws-11",
+    round: 4,
+    text: `On-call rotation: one week per month, you\ncarry the pager. When production breaks at\n2am, you fix it. In return, you get deep\nownership of the systems you're responsible for.`,
+    tags: ["infrastructure", "engineering", "high-autonomy"],
+    source: "crafted",
+  },
+  {
+    id: "ws-12",
+    round: 4,
+    text: `Travel 20-30% of the time. Visit clients\non-site, attend conferences, work from\ndifferent offices. Your laptop is your office.\nYou thrive on variety and face-to-face connection.`,
+    tags: ["customer-facing", "people-heavy", "consulting"],
+    source: "crafted",
+  },
+  {
+    id: "ws-13",
+    round: 4,
+    text: `Strong learning culture. Conference budget,\nbook clubs, 20% time for side projects.\nFriday afternoon tech talks are a tradition.\nGrowth is valued as much as output.`,
+    tags: ["mentorship", "established", "engineering"],
+    source: "crafted",
+  },
+  {
+    id: "ws-14",
+    round: 4,
+    text: `Compensation is equity-heavy. Base salary is\nmodest but your stock options could be worth\na lot if the company succeeds. You're betting\non the upside and building something from scratch.`,
+    tags: ["startup", "small-team", "high-autonomy"],
+    source: "crafted",
+  },
+  {
+    id: "ws-15",
+    round: 4,
+    text: `Junior-friendly environment. Senior engineers\nmentor you daily. Code reviews are learning\nopportunities, not gatekeeping. There's a\nclear onboarding path and no stupid questions.`,
+    tags: ["mentorship", "people-heavy", "established"],
     source: "crafted",
   },
 ];

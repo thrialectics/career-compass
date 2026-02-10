@@ -1,5 +1,4 @@
 import type { Card } from "./cards.ts";
-import { allCards } from "./cards.ts";
 
 export type Reaction = "y" | "n" | "s";
 
@@ -14,7 +13,7 @@ interface Profile {
   topDrawn: string[];
   topAvoid: string[];
   matchingRoles: string[];
-  matchingCompanies: string[];
+  lookFor: string[];
 }
 
 const prefsDir = import.meta.dir + "/prefs";
@@ -72,55 +71,47 @@ const roleMap: Record<string, string[]> = {
   "infrastructure": ["Site Reliability Engineer", "Platform Engineer"],
   "internal-tools": ["Platform Engineer", "Developer Experience Engineer"],
   "mission-driven": ["Civic Tech Engineer", "Impact-Focused PM"],
+  "design-heavy": ["UX Designer", "Product Designer"],
+  "security": ["Security Engineer", "Application Security Engineer"],
+  "mobile": ["Mobile Engineer", "iOS/Android Developer"],
+  "ai": ["ML Engineer", "AI/ML Engineer"],
+  "research": ["Research Engineer", "Research Scientist"],
+  "qa": ["QA Engineer", "Test Automation Engineer"],
+  "gaming": ["Game Developer", "Game Engineer"],
+  "management-track": ["Engineering Manager", "Director of Engineering"],
+  "healthcare": ["Health Tech Engineer", "Clinical Software Engineer"],
 };
 
-const companyMap: Record<string, { name: string; sector: string; location: string }[]> = {
-  "civic-tech": [
-    { name: "Recidiviz", sector: "Civic Tech", location: "remote, NYC" },
-    { name: "Nava PBC", sector: "Civic Tech", location: "remote" },
-    { name: "Code for America", sector: "Civic Tech", location: "remote" },
-    { name: "Ad Hoc", sector: "Civic Tech", location: "remote" },
-    { name: "CivicActions", sector: "Civic Tech", location: "remote" },
-  ],
-  "mission-driven": [
-    { name: "Recidiviz", sector: "Civic Tech", location: "remote, NYC" },
-    { name: "Khan Academy", sector: "EdTech", location: "remote" },
-    { name: "Bonterra", sector: "Nonprofit SaaS", location: "remote" },
-  ],
-  "devtools": [
-    { name: "Vercel", sector: "Developer Tools", location: "remote" },
-    { name: "Railway", sector: "Developer Tools", location: "remote" },
-    { name: "Render", sector: "Developer Tools", location: "remote" },
-    { name: "Supabase", sector: "Developer Tools", location: "remote" },
-    { name: "Replit", sector: "Developer Tools", location: "remote" },
-  ],
-  "edtech": [
-    { name: "Khan Academy", sector: "EdTech", location: "remote" },
-    { name: "Duolingo", sector: "EdTech", location: "Pittsburgh" },
-    { name: "Brilliant", sector: "EdTech", location: "remote" },
-    { name: "Coursera", sector: "EdTech", location: "remote" },
-  ],
-  "nonprofit-saas": [
-    { name: "Bonterra", sector: "Nonprofit SaaS", location: "remote" },
-    { name: "Submittable", sector: "Nonprofit SaaS", location: "remote" },
-    { name: "CauseVox", sector: "Nonprofit SaaS", location: "remote" },
-    { name: "Candid", sector: "Nonprofit SaaS", location: "NYC" },
-    { name: "Instrumentl", sector: "Nonprofit SaaS", location: "remote" },
-  ],
-  "ai": [
-    { name: "Anthropic", sector: "AI", location: "SF, NYC" },
-    { name: "Replit", sector: "AI/DevTools", location: "remote" },
-  ],
-  "b2b-saas": [
-    { name: "Notion", sector: "Productivity", location: "SF" },
-    { name: "Airtable", sector: "Productivity", location: "SF" },
-    { name: "Figma", sector: "Design Tools", location: "SF" },
-    { name: "Mercury", sector: "Fintech", location: "remote" },
-  ],
-  "climate": [
-    { name: "Watershed", sector: "Climate Tech", location: "SF" },
-  ],
-};
+// Archetype recommendations: dimension combos → descriptive suggestions
+interface Archetype {
+  description: string;
+  requires: string[];   // all must be positive
+  bonus?: string[];     // boost score if also positive
+}
+
+const archetypes: Archetype[] = [
+  { description: "Remote-first developer tools startups (< 50 people)", requires: ["devtools", "remote-first"], bonus: ["small-team", "startup"] },
+  { description: "Mission-driven orgs building civic tech or public interest software", requires: ["mission-driven", "civic-tech"], bonus: ["remote-first", "public-sector"] },
+  { description: "Mid-size product companies with strong design culture", requires: ["product", "design-heavy"], bonus: ["established", "hybrid"] },
+  { description: "Fast-growing B2B SaaS with data-driven product teams", requires: ["b2b-saas", "data-heavy"], bonus: ["product", "profit-driven"] },
+  { description: "Small engineering-led startups shipping fast", requires: ["startup", "code-heavy"], bonus: ["small-team", "engineering"] },
+  { description: "Large established companies with structured career ladders", requires: ["large-org", "established"], bonus: ["profit-driven", "in-office"] },
+  { description: "AI/ML companies doing applied research", requires: ["ai", "research"], bonus: ["engineering", "data-heavy"] },
+  { description: "EdTech organizations improving access to education", requires: ["edtech", "mission-driven"], bonus: ["product", "remote-first"] },
+  { description: "Healthcare tech companies building patient-facing tools", requires: ["healthcare", "product"], bonus: ["mission-driven", "security"] },
+  { description: "Nonprofit SaaS platforms serving social sector organizations", requires: ["nonprofit-saas", "mission-driven"], bonus: ["customer-facing", "remote-first"] },
+  { description: "Climate tech startups tackling sustainability", requires: ["climate", "startup"], bonus: ["mission-driven", "small-team"] },
+  { description: "Gaming studios building multiplayer experiences", requires: ["gaming", "code-heavy"], bonus: ["in-office", "product"] },
+  { description: "Ecommerce platforms operating at massive scale", requires: ["ecommerce", "infrastructure"], bonus: ["data-heavy", "large-org"] },
+  { description: "Infrastructure and platform engineering teams", requires: ["infrastructure", "tooling"], bonus: ["engineering", "remote-first"] },
+  { description: "Consulting or client-facing technical roles with travel", requires: ["customer-facing", "consulting"], bonus: ["people-heavy"] },
+  { description: "Remote async teams with high individual autonomy", requires: ["remote-first", "high-autonomy"], bonus: ["writing-heavy", "small-team"] },
+  { description: "Companies with strong mentorship and learning culture", requires: ["mentorship", "established"], bonus: ["people-heavy", "engineering"] },
+  { description: "Social media companies working on trust and safety", requires: ["social-media", "ai"], bonus: ["data-heavy", "engineering"] },
+  { description: "Fintech companies building financial infrastructure", requires: ["fintech", "engineering"], bonus: ["code-heavy", "infrastructure"] },
+  { description: "Logistics and supply chain optimization companies", requires: ["logistics", "data-heavy"], bonus: ["infrastructure", "engineering"] },
+  { description: "Media and streaming companies with personalization focus", requires: ["media", "data-heavy"], bonus: ["ai", "large-org"] },
+];
 
 export function getMatchingRoles(): string[] {
   const top = getTopDimensions(5, "positive").map(([dim]) => dim);
@@ -134,21 +125,25 @@ export function getMatchingRoles(): string[] {
   return roles.slice(0, 5);
 }
 
-export function getMatchingCompanies() {
-  const sectorDims = new Set(Object.keys(companyMap));
-  const top = Object.entries(getDimensionScores())
-    .filter(([dim, v]) => v > 0 && sectorDims.has(dim))
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5)
-    .map(([dim]) => dim);
-  const seen = new Set<string>();
-  const companies: { name: string; sector: string; location: string }[] = [];
-  for (const dim of top) {
-    for (const co of companyMap[dim] ?? []) {
-      if (!seen.has(co.name)) { seen.add(co.name); companies.push(co); }
+export function getMatchingArchetypes(): string[] {
+  const dims = getDimensionScores();
+
+  const scored = archetypes.map((a) => {
+    const allRequired = a.requires.every((d) => (dims[d] ?? 0) > 0);
+    if (!allRequired) return { description: a.description, score: -1 };
+
+    let score = a.requires.reduce((sum, d) => sum + (dims[d] ?? 0), 0);
+    for (const b of a.bonus ?? []) {
+      if ((dims[b] ?? 0) > 0) score += (dims[b] ?? 0) * 0.5;
     }
-  }
-  return companies.slice(0, 6);
+    return { description: a.description, score };
+  });
+
+  return scored
+    .filter((a) => a.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5)
+    .map((a) => a.description);
 }
 
 export async function saveResults() {
@@ -158,7 +153,7 @@ export async function saveResults() {
     topDrawn: getTopDimensions(5, "positive").map(([d]) => d),
     topAvoid: getTopDimensions(5, "negative").map(([d]) => d),
     matchingRoles: getMatchingRoles(),
-    matchingCompanies: getMatchingCompanies().map((c) => c.name),
+    lookFor: getMatchingArchetypes(),
   };
   await Bun.write(profilePath, JSON.stringify(profile, null, 2));
 }
