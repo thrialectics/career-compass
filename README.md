@@ -16,12 +16,12 @@ Instead of introspecting abstractly about what you want, you swipe through real 
 
 | Round | Cards | What you're reacting to |
 |-------|-------|------------------------|
-| 1. Company Vibes | 12 | Real and archetypal company descriptions |
-| 2. Daily Work | 15 | What your day-to-day would look like |
-| 3. Problems & Projects | 12 | The kind of problems you'd solve |
-| 4. Work Style | 8 | How the team works together |
+| 1. Company Vibes | 18 | Real and archetypal company descriptions |
+| 2. Daily Work | 20 | What your day-to-day would look like |
+| 3. Problems & Projects | 17 | The kind of problems you'd solve |
+| 4. Work Style | 15 | How the team works together |
 
-47 cards total. Takes about 5-10 minutes.
+70 cards total. Takes about 5-10 minutes.
 
 ## Run it
 
